@@ -21,15 +21,27 @@ function lazyRetry<T extends React.ComponentType<any>>(
 }
 
 const LandingPage = lazyRetry(() => import('@/pages/landing/LandingPage'));
-const SellDashboard = lazyRetry(() => import('@/pages/sell/SellDashboard'));
-const IntakePage = lazyRetry(() => import('@/pages/sell/IntakePage'));
+
+// Sell wizard
+const SellWelcome = lazyRetry(() => import('@/pages/sell/WelcomePage'));
+const AddressStep = lazyRetry(() => import('@/pages/sell/AddressStep'));
+const VerifyStep = lazyRetry(() => import('@/pages/sell/VerifyStep'));
+const AboutStep = lazyRetry(() => import('@/pages/sell/AboutStep'));
+const PhotosStep = lazyRetry(() => import('@/pages/sell/PhotosStep'));
 const SellCmaPage = lazyRetry(() => import('@/pages/sell/CmaPage'));
+const PriceStep = lazyRetry(() => import('@/pages/sell/PriceStep'));
 const ListingPreview = lazyRetry(() => import('@/pages/sell/ListingPreview'));
+const SignStep = lazyRetry(() => import('@/pages/sell/SignStep'));
+const SellLive = lazyRetry(() => import('@/pages/sell/LivePage'));
 const MarketingPage = lazyRetry(() => import('@/pages/sell/MarketingPage'));
+
+// Buy flow
 const BuyDashboard = lazyRetry(() => import('@/pages/buy/BuyDashboard'));
 const BuyFeed = lazyRetry(() => import('@/pages/buy/BuyFeed'));
 const BuyListingDetail = lazyRetry(() => import('@/pages/buy/BuyListingDetail'));
 const BuyOfferBuilder = lazyRetry(() => import('@/pages/buy/BuyOfferBuilder'));
+
+// Shared
 const TimelinePage = lazyRetry(() => import('@/pages/timeline/TimelinePage'));
 const HowItWorks = lazyRetry(() => import('@/pages/how/HowItWorks'));
 const NotFound = lazyRetry(() => import('@/pages/NotFound'));
@@ -57,12 +69,19 @@ export default function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
 
+              {/* Wizard pages render their own layout — only AppShell wraps non-wizard */}
               <Route element={<AppShell />}>
-                {/* Sell flow */}
-                <Route path="sell" element={<SellDashboard />} />
-                <Route path="sell/intake" element={<IntakePage />} />
+                {/* Sell wizard */}
+                <Route path="sell" element={<SellWelcome />} />
+                <Route path="sell/address" element={<AddressStep />} />
+                <Route path="sell/verify" element={<VerifyStep />} />
+                <Route path="sell/about" element={<AboutStep />} />
+                <Route path="sell/photos" element={<PhotosStep />} />
                 <Route path="sell/valuation" element={<SellCmaPage />} />
-                <Route path="sell/listing" element={<ListingPreview />} />
+                <Route path="sell/price" element={<PriceStep />} />
+                <Route path="sell/preview" element={<ListingPreview />} />
+                <Route path="sell/sign" element={<SignStep />} />
+                <Route path="sell/live" element={<SellLive />} />
                 <Route path="sell/marketing" element={<MarketingPage />} />
                 <Route path="sell/timeline" element={<TimelinePage />} />
 

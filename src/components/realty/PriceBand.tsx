@@ -14,7 +14,7 @@ export default function PriceBand({ low, high, confidence, caption }: Props) {
   const confidenceBg = confidence >= 0.85 ? 'bg-emerald-500' : confidence >= 0.7 ? 'bg-amber-500' : 'bg-red-500';
 
   return (
-    <div className="bg-gradient-to-br from-sidebar to-[#1c3540] text-white rounded-2xl p-6 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-sidebar to-sidebar-deep text-white rounded-2xl p-6 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-48 h-48 bg-accent-gold/15 rounded-full blur-3xl -translate-y-12 translate-x-12" />
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl translate-y-8 -translate-x-8" />
 

@@ -1,30 +1,32 @@
-import { Link } from 'react-router';
-import { ArrowRight, CheckCircle2, Edit, Sparkles, Eye, Heart, Share2 } from 'lucide-react';
+import { CheckCircle2, Edit, Sparkles, Eye, Heart, Share2 } from 'lucide-react';
 import { myListing } from '@/data/mockData';
 import { formatCurrency, formatSqft } from '@/lib/format';
 import { useToast } from '@/components/shared/Toast';
+import WizardLayout from '@/components/realty/WizardLayout';
 
 export default function ListingPreview() {
   const { toast } = useToast();
   const photos = ['🏙️', '🛋️', '🍳', '🛏️', '🛁', '🌅', '🏊', '💪'];
 
   return (
-    <div className="p-4 md:p-6 max-w-3xl mx-auto pb-32">
-      <div className="mb-5">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight">Your listing</h1>
-        <p className="text-sm text-text-secondary">Live on MLS, Zillow, and Realtor.com — this is what buyers see</p>
-      </div>
-
-      {/* Live badge */}
-      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 mb-4 flex items-center gap-2.5">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-        </span>
-        <p className="text-sm font-bold text-emerald-900 flex-1">Live · listed {myListing.daysOnMarket} days ago</p>
+    <WizardLayout
+      step={7}
+      stepName="Preview"
+      aiMessage="Here's your listing. This is exactly what buyers will see."
+      aiHint="I wrote the description from your photos and intake. Tap edit to tweak anything."
+      backTo="/sell/price"
+      continueTo="/sell/sign"
+      continueLabel="Looks good — sign"
+    >
+      {/* Preview badge */}
+      <div className="bg-accent-gold/15 border border-accent-gold/40 rounded-xl p-3 mb-4 flex items-center gap-2.5">
+        <Sparkles size={16} className="text-amber-700 flex-shrink-0" />
+        <p className="text-sm font-bold text-amber-900 flex-1">
+          Preview mode — listing goes live after you sign
+        </p>
         <button
-          onClick={() => toast('Edit window opened.', 'info')}
-          className="text-xs font-bold text-emerald-700 flex items-center gap-1 hover:text-emerald-800"
+          onClick={() => toast('Edit panel opening...', 'info')}
+          className="text-xs font-bold text-amber-700 flex items-center gap-1 hover:text-amber-800 flex-shrink-0"
         >
           <Edit size={12} /> Edit
         </button>
@@ -92,29 +94,16 @@ export default function ListingPreview() {
         </div>
       </div>
 
-      {/* Engagement preview */}
-      <div className="bg-white rounded-2xl border border-border p-5 mb-5">
-        <h3 className="text-sm font-bold text-text-primary mb-3">Buyer engagement</h3>
+      {/* Engagement projection */}
+      <div className="bg-white rounded-2xl border border-border p-5 mb-3">
+        <h3 className="text-sm font-bold text-text-primary mb-3">When you go live, expect</h3>
         <div className="grid grid-cols-3 gap-3">
-          <Engagement icon={Eye} label="Views (24h)" value="142" />
-          <Engagement icon={Heart} label="Saves" value="38" />
-          <Engagement icon={Share2} label="Shares" value="11" />
+          <Engagement icon={Eye} label="Day 1 views" value="~140" />
+          <Engagement icon={Heart} label="Day 1 saves" value="~32" />
+          <Engagement icon={Share2} label="Drips fired" value="3,247" />
         </div>
       </div>
-
-      <Link
-        to="/sell/marketing"
-        className="block bg-primary text-white rounded-2xl p-5 hover:bg-primary-hover transition-colors"
-      >
-        <div className="flex items-center gap-3">
-          <div className="flex-1 min-w-0">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">Next step</p>
-            <p className="text-base md:text-lg font-extrabold">Marketing & 2 new offers →</p>
-          </div>
-          <ArrowRight size={20} />
-        </div>
-      </Link>
-    </div>
+    </WizardLayout>
   );
 }
 

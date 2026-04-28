@@ -23,7 +23,7 @@ export default function BuyDashboard() {
   return (
     <div className="p-4 md:p-6 max-w-4xl mx-auto pb-32">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-sidebar to-[#1c3540] text-white rounded-3xl p-5 md:p-7 mb-5 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-sidebar to-sidebar-deep text-white rounded-3xl p-5 md:p-7 mb-5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent-gold/15 rounded-full blur-3xl -translate-y-20 translate-x-20" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl translate-y-12 -translate-x-12" />
 

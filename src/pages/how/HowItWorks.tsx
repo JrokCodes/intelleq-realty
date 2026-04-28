@@ -92,7 +92,7 @@ export default function HowItWorks() {
         </div>
         <Link
           to="/buy"
-          className="mt-4 flex items-center justify-center gap-2 py-3 rounded-2xl bg-sidebar text-accent-gold text-sm font-bold hover:bg-[#1c3540] transition-colors"
+          className="mt-4 flex items-center justify-center gap-2 py-3 rounded-2xl bg-sidebar text-accent-gold text-sm font-bold hover:bg-sidebar-deep transition-colors"
         >
           Try the buy flow <ArrowRight size={16} />
         </Link>

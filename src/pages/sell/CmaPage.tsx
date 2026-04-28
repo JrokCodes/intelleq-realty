@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
-import { ArrowRight, FileText, MapPin, Sparkles, Filter, ShieldCheck } from 'lucide-react';
+import { MapPin, Sparkles, Filter, ShieldCheck } from 'lucide-react';
 import { myListing, compsByListing } from '@/data/mockData';
 import { formatCurrency, formatSqft } from '@/lib/format';
 import PriceBand from '@/components/realty/PriceBand';
 import CompCard from '@/components/realty/CompCard';
-import { useToast } from '@/components/shared/Toast';
+import WizardLayout from '@/components/realty/WizardLayout';
 
 export default function CmaPage() {
-  const { toast } = useToast();
   const allComps = compsByListing[myListing.id] || [];
 
   const [radius, setRadius] = useState(1.0);
@@ -27,19 +25,22 @@ export default function CmaPage() {
     strongComps >= 6
       ? `High confidence — ${strongComps} strong comparable sales within ${radius.toFixed(1)}mi, all sold within the last ${maxAgeMonths} months.`
       : strongComps >= 3
-      ? `Medium confidence — ${strongComps} strong comparable sales. Consider widening radius or time window.`
-      : `Low confidence — only ${strongComps} strong comp${strongComps === 1 ? '' : 's'}. Recommend a manual review with our partner agent.`;
+      ? `Medium confidence — ${strongComps} strong comparable sales. Consider widening the search.`
+      : `Low confidence — only ${strongComps} strong comp${strongComps === 1 ? '' : 's'}. Try widening the search.`;
 
   return (
-    <div className="p-4 md:p-6 max-w-3xl mx-auto pb-32">
-      <div className="mb-4">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight">Your home's value</h1>
-        <p className="text-sm text-text-secondary">AI valuation based on real recent sales nearby</p>
-      </div>
-
+    <WizardLayout
+      step={5}
+      stepName="Valuation"
+      aiMessage={`Based on real recent sales, your home is worth ${formatCurrency(myListing.aiPriceLow, { compact: true })}–${formatCurrency(myListing.aiPriceHigh, { compact: true })}.`}
+      aiHint="Tap any comp to see how I adjusted for square footage, condition, and time of sale. You'll set your list price next."
+      backTo="/sell/photos"
+      continueTo="/sell/price"
+      continueLabel="Set my price"
+    >
       {/* Subject property card */}
       <div className="bg-white rounded-2xl border border-border p-5 mb-4">
-        <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-3">
+        <span className="inline-block px-2 py-0.5 rounded-full bg-primary-soft text-primary text-[10px] font-bold uppercase tracking-wider mb-3">
           Your property
         </span>
         <div className="flex items-start gap-4">
@@ -66,24 +67,8 @@ export default function CmaPage() {
         caption={caption}
       />
 
-      {/* Recommended list price */}
-      <div className="mt-4 bg-white rounded-2xl border-2 border-primary p-5">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">AI recommendation</p>
-            <p className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight">List at {formatCurrency(myListing.listPrice, { compact: true })}</p>
-          </div>
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <Sparkles size={20} className="text-primary" />
-          </div>
-        </div>
-        <p className="text-sm text-text-secondary leading-relaxed">
-          Slightly below the comp midpoint to drive multiple offers. Goal: net higher than the AI midpoint after a competitive bidding scenario.
-        </p>
-      </div>
-
       {/* Filters */}
-      <div className="mt-5 bg-white rounded-2xl border border-border p-4">
+      <div className="mt-4 bg-white rounded-2xl border border-border p-4">
         <div className="flex items-center gap-2 mb-3">
           <Filter size={14} className="text-text-muted" />
           <span className="text-[11px] font-bold uppercase tracking-wider text-text-muted">Adjust comp filters</span>
@@ -122,7 +107,7 @@ export default function CmaPage() {
           <MapPin size={14} className="text-text-muted" />
           <span className="text-[11px] font-bold uppercase tracking-wider text-text-muted">Map view</span>
         </div>
-        <div className="aspect-[16/9] bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50 rounded-xl border border-border relative overflow-hidden">
+        <div className="aspect-[16/9] bg-gradient-to-br from-blue-50 via-sky-50 to-amber-50 rounded-xl border border-border relative overflow-hidden">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 225" preserveAspectRatio="none">
             <path d="M 0 80 L 400 90" stroke="#CBD5E1" strokeWidth="1" />
             <path d="M 0 140 L 400 130" stroke="#CBD5E1" strokeWidth="1" />
@@ -172,25 +157,13 @@ export default function CmaPage() {
         <ShieldCheck size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
         <p className="text-[11px] md:text-xs text-emerald-800 leading-snug">
           Generated by IntelleQ AI from {allComps.length} verified MLS records. Reviewed by your partner agent
-          (Cameron Leopoldino, Lic. RB-22451). The recommendation is advisory — your final list price is your decision.
+          (Cameron Leopoldino, Lic. RB-22451). Your final list price is your decision.
         </p>
       </div>
 
-      {/* CTAs */}
-      <div className="mt-4 grid grid-cols-2 gap-2">
-        <button
-          onClick={() => toast('Valuation report PDF will be emailed in moments.', 'success')}
-          className="py-3 px-4 rounded-xl bg-white border border-border text-sm font-bold text-text-primary hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2"
-        >
-          <FileText size={16} /> PDF report
-        </button>
-        <Link
-          to="/sell/listing"
-          className="py-3 px-4 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary-hover transition-colors flex items-center justify-center gap-2"
-        >
-          See listing <ArrowRight size={16} />
-        </Link>
-      </div>
-    </div>
+      <p className="text-center text-[11px] text-text-muted/70 mt-4 flex items-center justify-center gap-1">
+        <Sparkles size={11} /> Pulled from Honolulu MLS just now
+      </p>
+    </WizardLayout>
   );
 }
