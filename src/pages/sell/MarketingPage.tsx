@@ -180,7 +180,7 @@ export default function MarketingPage() {
         <div>
           <p className="text-sm font-extrabold text-emerald-900">All offers reviewed by your partner agent</p>
           <p className="text-xs text-emerald-800 leading-relaxed mt-0.5">
-            Dana Tanaka (Lic. RB-22451) reviews each offer for fiduciary alignment. AI handles the heavy lifting; your licensed agent ensures every step is protected.
+            Cameron Leopoldino (Lic. RB-22451) reviews each offer for fiduciary alignment. AI handles the heavy lifting; your licensed agent ensures every step is protected.
           </p>
         </div>
       </div>

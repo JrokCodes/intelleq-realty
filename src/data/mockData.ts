@@ -36,7 +36,7 @@ export const contacts: Contact[] = [
   { id: 'c-304', firstName: 'Lia', lastName: 'Park', email: 'lia@kapahuluescrow.com', phone: '(808) 555-0712', role: 'escrow', company: 'Kapahulu Escrow', initials: 'LP' },
   { id: 'c-305', firstName: 'Ryo', lastName: 'Honda', email: 'ryo@oahuphoto.com', phone: '(808) 555-0810', role: 'photographer', company: 'Oahu Real Estate Photo', initials: 'RH' },
   // Partner agent (licensed) for legal sign-off
-  { id: 'c-306', firstName: 'Dana', lastName: 'Tanaka', email: 'dana@intelleqrealty.com', phone: '(808) 555-0911', role: 'inspector', company: 'IntelleQ Partner Agent · Lic. RB-22451', initials: 'DT' },
+  { id: 'c-306', firstName: 'Cameron', lastName: 'Leopoldino', email: 'cameron@intelleqrealty.com', phone: '(808) 555-0911', role: 'inspector', company: 'IntelleQ Partner Agent · Lic. RB-22451', initials: 'CL' },
 ];
 
 // =============================================================================

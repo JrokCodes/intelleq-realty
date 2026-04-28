@@ -191,7 +191,7 @@ export default function BuyOfferBuilder() {
         <div>
           <p className="text-sm font-extrabold text-emerald-900">Reviewed by your partner agent</p>
           <p className="text-xs text-emerald-800 leading-relaxed mt-0.5">
-            Dana Tanaka (Lic. RB-22451) reviews your offer for legal compliance before it's sent. You always have a licensed agent on your side.
+            Cameron Leopoldino (Lic. RB-22451) reviews your offer for legal compliance before it's sent. You always have a licensed agent on your side.
           </p>
         </div>
       </div>

@@ -155,7 +155,7 @@ export default function SellDashboard() {
         <div>
           <p className="text-sm font-extrabold text-emerald-900">Backed by a licensed partner agent</p>
           <p className="text-xs text-emerald-800 leading-relaxed mt-0.5">
-            Every action AI takes on your behalf is reviewed by Dana Tanaka (RB-22451) — a Hawaii-licensed agent
+            Every action AI takes on your behalf is reviewed by Cameron Leopoldino (RB-22451) — a Hawaii-licensed agent
             who signs off on the transaction at a small flat fee instead of 5–6% commission.
           </p>
         </div>
