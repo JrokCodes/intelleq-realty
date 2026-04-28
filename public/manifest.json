@@ -1,0 +1,18 @@
+{
+  "name": "IntelleQ Realty",
+  "short_name": "IQ Realty",
+  "description": "AI-powered real estate platform — CMA, listings, offers, and deal timelines in one place.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFBFC",
+  "theme_color": "#264653",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
