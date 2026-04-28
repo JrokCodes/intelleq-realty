@@ -3,36 +3,44 @@ import type {
   Listing,
   Buyer,
   Comp,
-  Deal,
   TimelineMilestone,
   DocumentRef,
   Alert,
-  Offer,
 } from '@/lib/types';
 
 // =============================================================================
-// CONTACTS — 12 (sellers, buyers, partners)
+// CONTACTS — sellers, buyers, partners
 // =============================================================================
 
 export const contacts: Contact[] = [
-  { id: 'c-001', firstName: 'Malia', lastName: 'Kahale', email: 'malia.k@example.com', phone: '(808) 555-0142', role: 'seller', initials: 'MK', notes: 'Relocating to mainland for job. Wants to close before September.' },
-  { id: 'c-002', firstName: 'David', lastName: 'Lim', email: 'david.lim@example.com', phone: '(808) 555-0177', role: 'seller', initials: 'DL', notes: 'Inherited property, no urgency. Wants top dollar.' },
-  { id: 'c-003', firstName: 'Sarah', lastName: 'Otani', email: 'sarah.otani@example.com', phone: '(808) 555-0163', role: 'seller', initials: 'SO', notes: 'Downsizing, kids graduated.' },
+  // Sellers
+  { id: 'c-001', firstName: 'Maya', lastName: 'Kahale', email: 'maya.k@example.com', phone: '(808) 555-0142', role: 'seller', initials: 'MK', notes: 'You — selling your Anaha condo to relocate to mainland.' },
+  { id: 'c-002', firstName: 'David', lastName: 'Lim', email: 'david.lim@example.com', phone: '(808) 555-0177', role: 'seller', initials: 'DL' },
+  { id: 'c-003', firstName: 'Sarah', lastName: 'Otani', email: 'sarah.otani@example.com', phone: '(808) 555-0163', role: 'seller', initials: 'SO' },
   { id: 'c-004', firstName: 'James', lastName: 'Park', email: 'james.park@example.com', phone: '(808) 555-0189', role: 'seller', initials: 'JP' },
   { id: 'c-005', firstName: 'Lina', lastName: 'Chun', email: 'lina.chun@example.com', phone: '(808) 555-0119', role: 'seller', initials: 'LC' },
 
-  { id: 'c-101', firstName: 'Trevor', lastName: 'Nakamura', email: 'trevor.n@example.com', phone: '(808) 555-0204', role: 'buyer', initials: 'TN', notes: 'First-time buyer. Very engaged on drip emails.' },
-  { id: 'c-102', firstName: 'Priya', lastName: 'Shah', email: 'priya.s@example.com', phone: '(808) 555-0287', role: 'buyer', initials: 'PS', notes: 'Cash buyer, relocating from California.' },
+  // Buyers
+  { id: 'c-101', firstName: 'Alex', lastName: 'Chen', email: 'alex.chen@example.com', phone: '(808) 555-0204', role: 'buyer', initials: 'AC', notes: 'You — first-time buyer looking in Honolulu and Mililani, pre-approved up to $850k.' },
+  { id: 'c-102', firstName: 'Priya', lastName: 'Shah', email: 'priya.s@example.com', phone: '(808) 555-0287', role: 'buyer', initials: 'PS' },
   { id: 'c-103', firstName: 'Kai', lastName: 'Maeda', email: 'kai.maeda@example.com', phone: '(808) 555-0316', role: 'buyer', initials: 'KM' },
-  { id: 'c-104', firstName: 'Ashley', lastName: 'Wong', email: 'ashley.wong@example.com', phone: '(808) 555-0335', role: 'buyer', initials: 'AW' },
 
-  { id: 'c-201', firstName: 'Brett', lastName: 'Yamamoto', email: 'brett.y@firstpacific.com', phone: '(808) 555-0411', role: 'lender', company: 'First Pacific Mortgage', initials: 'BY' },
-  { id: 'c-202', firstName: 'Karen', lastName: 'Ito', email: 'karen@hawaiititle.com', phone: '(808) 555-0512', role: 'title', company: 'Hawaii Title Co.', initials: 'KI' },
-  { id: 'c-203', firstName: 'Mike', lastName: 'Souza', email: 'mike@oahuinspect.com', phone: '(808) 555-0633', role: 'inspector', company: 'Oahu Home Inspections', initials: 'MS' },
+  // Imaginary buyers making offers on Maya's home
+  { id: 'c-201', firstName: 'Jordan', lastName: 'Wright', email: 'jordan.w@example.com', phone: '(808) 555-0414', role: 'buyer', initials: 'JW' },
+  { id: 'c-202', firstName: 'Mei', lastName: 'Tanaka', email: 'mei.t@example.com', phone: '(808) 555-0455', role: 'buyer', initials: 'MT' },
+
+  // Partners
+  { id: 'c-301', firstName: 'Brett', lastName: 'Yamamoto', email: 'brett.y@firstpacific.com', phone: '(808) 555-0411', role: 'lender', company: 'First Pacific Mortgage', initials: 'BY' },
+  { id: 'c-302', firstName: 'Karen', lastName: 'Ito', email: 'karen@hawaiititle.com', phone: '(808) 555-0512', role: 'title', company: 'Hawaii Title Co.', initials: 'KI' },
+  { id: 'c-303', firstName: 'Mike', lastName: 'Souza', email: 'mike@oahuinspect.com', phone: '(808) 555-0633', role: 'inspector', company: 'Oahu Home Inspections', initials: 'MS' },
+  { id: 'c-304', firstName: 'Lia', lastName: 'Park', email: 'lia@kapahuluescrow.com', phone: '(808) 555-0712', role: 'escrow', company: 'Kapahulu Escrow', initials: 'LP' },
+  { id: 'c-305', firstName: 'Ryo', lastName: 'Honda', email: 'ryo@oahuphoto.com', phone: '(808) 555-0810', role: 'photographer', company: 'Oahu Real Estate Photo', initials: 'RH' },
+  // Partner agent (licensed) for legal sign-off
+  { id: 'c-306', firstName: 'Dana', lastName: 'Tanaka', email: 'dana@intelleqrealty.com', phone: '(808) 555-0911', role: 'inspector', company: 'IntelleQ Partner Agent · Lic. RB-22451', initials: 'DT' },
 ];
 
 // =============================================================================
-// LISTINGS — 5 Oahu properties
+// LISTINGS — 5 Oahu properties (l-001 = Maya's home)
 // =============================================================================
 
 export const listings: Listing[] = [
@@ -48,7 +56,7 @@ export const listings: Listing[] = [
     aiTags: ['Floor-to-ceiling windows', 'Ocean view', 'Granite countertops', 'Stainless appliances', 'In-unit laundry', 'Pool & gym'],
     intakeComplete: true,
     titleStatus: 'clear',
-    marketingChannels: ['MLS', 'Zillow', 'Instagram', 'Drip campaign (3,247 buyers)'],
+    marketingChannels: ['MLS', 'Zillow', 'Realtor.com', 'Instagram', 'Drip campaign (3,247 buyers)'],
     description: 'Stunning 22nd-floor 2BR/2BA in Anaha with sweeping Diamond Head and ocean views. Floor-to-ceiling windows, Bosch appliances, marble baths.',
     parking: 1,
     hoa: 1240,
@@ -62,26 +70,26 @@ export const listings: Listing[] = [
     listPrice: 2_175_000, aiPriceLow: 2_115_000, aiPriceHigh: 2_240_000, aiConfidence: 0.81,
     daysOnMarket: 28,
     photoEmoji: '🌴',
-    aiTags: ['Single-level', 'Pool', 'Solar PV', 'Walk to beach (0.4mi)', 'Mature mango trees', 'Vaulted ceilings'],
+    aiTags: ['Single-level', 'Pool', 'Solar PV', 'Walk to beach', 'Mature mango trees', 'Vaulted ceilings'],
     intakeComplete: true,
     titleStatus: 'clear',
-    marketingChannels: ['MLS', 'Zillow', 'Realtor.com', 'Open house Sat'],
-    description: 'Beach-side single-level in coveted Kailua. 4BR/3BA with pool, owned solar, and mature landscaping. 0.4mi walk to Kailua Beach.',
+    marketingChannels: ['MLS', 'Zillow', 'Realtor.com'],
+    description: 'Beach-side single-level in Kailua. 4BR/3BA with pool, owned solar, and mature landscaping. 0.4mi walk to Kailua Beach.',
     parking: 2,
   },
   {
     id: 'l-003',
     sellerId: 'c-003',
     address: { line1: '95-271 Waikalani Dr #B304', city: 'Mililani', state: 'HI', zip: '96789', neighborhood: 'Mililani' },
-    status: 'pre_market',
+    status: 'active',
     beds: 3, baths: 2, sqft: 1310, lotSqft: 0, yearBuilt: 2005,
     listPrice: 745_000, aiPriceLow: 720_000, aiPriceHigh: 765_000, aiConfidence: 0.92,
-    daysOnMarket: 0,
+    daysOnMarket: 5,
     photoEmoji: '🏘️',
     aiTags: ['Corner unit', 'Two parking', 'Quiet street', 'Updated kitchen', 'Walk to park'],
     intakeComplete: true,
-    titleStatus: 'pending',
-    marketingChannels: ['MLS scheduled Mon'],
+    titleStatus: 'clear',
+    marketingChannels: ['MLS', 'Zillow'],
     description: 'Updated 3BR townhome in central Mililani. Corner unit with two assigned parking, near schools and community pool.',
     parking: 2,
     hoa: 510,
@@ -98,7 +106,7 @@ export const listings: Listing[] = [
     aiTags: ['Marina view', 'Boat dock access', 'Renovated 2022', 'Open floor plan', 'Two-car garage'],
     intakeComplete: true,
     titleStatus: 'clear',
-    marketingChannels: ['MLS', 'Zillow', 'Drip campaign'],
+    marketingChannels: ['MLS', 'Zillow'],
     description: 'Renovated 4BR with marina views and boat dock access in Hawaii Kai. Open-concept living, two-car garage.',
     parking: 2,
   },
@@ -106,22 +114,25 @@ export const listings: Listing[] = [
     id: 'l-005',
     sellerId: 'c-005',
     address: { line1: '2843 Lowrey Ave', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' },
-    status: 'draft',
+    status: 'active',
     beds: 3, baths: 2, sqft: 1720, lotSqft: 5400, yearBuilt: 1962,
     listPrice: 1_385_000, aiPriceLow: 1_340_000, aiPriceHigh: 1_420_000, aiConfidence: 0.74,
-    daysOnMarket: 0,
+    daysOnMarket: 22,
     photoEmoji: '🌳',
     aiTags: ['Mid-century', 'Mature trees', 'Mountain view', 'Original hardwood', 'Needs kitchen update'],
-    intakeComplete: false,
-    titleStatus: 'pending',
-    marketingChannels: [],
+    intakeComplete: true,
+    titleStatus: 'clear',
+    marketingChannels: ['MLS'],
     description: 'Charming mid-century 3BR in upper Manoa with mountain views and mature landscaping. Original hardwood floors throughout.',
     parking: 2,
   },
 ];
 
+// Maya's listing helper
+export const myListing = listings[0]!;
+
 // =============================================================================
-// BUYERS — 4
+// BUYERS — Alex Chen as the demo buyer persona
 // =============================================================================
 
 export const buyers: Buyer[] = [
@@ -129,38 +140,26 @@ export const buyers: Buyer[] = [
     id: 'b-001',
     contactId: 'c-101',
     preApproval: { status: 'approved', lender: 'First Pacific Mortgage', maxPrice: 850_000, expires: '2026-07-15' },
-    searchCriteria: { minBeds: 2, minBaths: 2, priceMin: 600_000, priceMax: 850_000, cities: ['Honolulu', 'Mililani'], mustHave: ['Parking', 'In-unit laundry'] },
-    dripActive: true, savedListingIds: ['l-001', 'l-003'], repAgreementSigned: true,
-    notes: 'Engaged on every drip email. Toured 4 properties. Ready to write offer on right one.',
-  },
-  {
-    id: 'b-002',
-    contactId: 'c-102',
-    preApproval: { status: 'approved', lender: 'Cash', maxPrice: 2_500_000 },
-    searchCriteria: { minBeds: 4, minBaths: 3, priceMin: 1_800_000, priceMax: 2_500_000, cities: ['Kailua', 'Hawaii Kai', 'Honolulu'], mustHave: ['Pool', 'Single-level preferred'] },
-    dripActive: true, savedListingIds: ['l-002', 'l-004'], repAgreementSigned: true,
-    notes: 'Cash relocation buyer from Bay Area. Wants to close in 30 days.',
-  },
-  {
-    id: 'b-003',
-    contactId: 'c-103',
-    preApproval: { status: 'pending', lender: 'First Pacific Mortgage' },
-    searchCriteria: { minBeds: 3, minBaths: 2, priceMin: 700_000, priceMax: 950_000, cities: ['Mililani', 'Pearl City', 'Aiea'], mustHave: ['Garage'] },
-    dripActive: true, savedListingIds: ['l-003'], repAgreementSigned: false,
-    notes: 'Pre-approval expected by Friday. Send rep agreement once approved.',
-  },
-  {
-    id: 'b-004',
-    contactId: 'c-104',
-    preApproval: { status: 'none' },
-    searchCriteria: { minBeds: 2, minBaths: 1, priceMin: 500_000, priceMax: 750_000, cities: ['Honolulu'], mustHave: [] },
-    dripActive: false, savedListingIds: [], repAgreementSigned: false,
-    notes: 'New lead. Needs lender intro before searching.',
+    searchCriteria: {
+      minBeds: 2,
+      minBaths: 2,
+      priceMin: 600_000,
+      priceMax: 850_000,
+      cities: ['Honolulu', 'Mililani'],
+      mustHave: ['Parking', 'In-unit laundry'],
+    },
+    dripActive: true,
+    savedListingIds: ['l-001', 'l-003', 'l-005'],
+    repAgreementSigned: true,
+    notes: 'First-time buyer. Looking for condo or townhome. Wants to close before September.',
   },
 ];
 
+// Alex's buyer
+export const me = buyers[0]!;
+
 // =============================================================================
-// COMPS — keyed by listing id
+// COMPS — keyed by listing id (used on /sell/cma for Maya's home)
 // =============================================================================
 
 export const compsByListing: Record<string, Comp[]> = {
@@ -174,14 +173,6 @@ export const compsByListing: Record<string, Comp[]> = {
     { id: 'cmp-1-7', address: { line1: '1108 Auahi St #1402', city: 'Honolulu', state: 'HI', zip: '96814', neighborhood: 'Kakaako' }, soldPrice: 968_000, soldDate: '2026-04-04', beds: 2, baths: 2, sqft: 1080, lotSqft: 0, yearBuilt: 2018, distanceMi: 0.0, matchScore: 94, adjustments: { sqft: 0, time: 200, condition: 0, lot: 0 }, adjustedPrice: 968_200, photoEmoji: '🏙️' },
     { id: 'cmp-1-8', address: { line1: '1330 Ala Moana Blvd #2401', city: 'Honolulu', state: 'HI', zip: '96814', neighborhood: 'Kakaako' }, soldPrice: 999_000, soldDate: '2026-01-08', beds: 2, baths: 2, sqft: 1075, lotSqft: 0, yearBuilt: 2017, distanceMi: 0.3, matchScore: 87, adjustments: { sqft: 1_000, time: 6_500, condition: 0, lot: 0 }, adjustedPrice: 1_006_500, photoEmoji: '🌆' },
   ],
-  'l-002': [
-    { id: 'cmp-2-1', address: { line1: '512 Kaumakani Pl', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 2_080_000, soldDate: '2026-02-04', beds: 4, baths: 3, sqft: 2280, lotSqft: 7800, yearBuilt: 1995, distanceMi: 0.4, matchScore: 92, adjustments: { sqft: 24_000, time: 9_000, condition: 0, lot: 5_500, }, adjustedPrice: 2_118_500, photoEmoji: '🌴' },
-    { id: 'cmp-2-2', address: { line1: '1244 Mokulua Dr', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 2_350_000, soldDate: '2026-03-18', beds: 4, baths: 3, sqft: 2510, lotSqft: 8400, yearBuilt: 2001, distanceMi: 0.7, matchScore: 84, adjustments: { sqft: -68_000, time: 4_700, condition: -25_000, lot: -3_500 }, adjustedPrice: 2_258_200, photoEmoji: '🏖️' },
-    { id: 'cmp-2-3', address: { line1: '88 Kuumele Pl', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 1_975_000, soldDate: '2026-01-30', beds: 4, baths: 2, sqft: 2150, lotSqft: 7900, yearBuilt: 1992, distanceMi: 0.6, matchScore: 76, adjustments: { sqft: 76_000, time: 11_500, condition: 18_000, lot: 2_500 }, adjustedPrice: 2_083_000, photoEmoji: '🌴' },
-    { id: 'cmp-2-4', address: { line1: '420 Kaha St', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 2_125_000, soldDate: '2026-04-02', beds: 4, baths: 3, sqft: 2305, lotSqft: 8050, yearBuilt: 2000, distanceMi: 0.1, matchScore: 95, adjustments: { sqft: 14_000, time: 800, condition: 0, lot: 1_000 }, adjustedPrice: 2_140_800, photoEmoji: '🌴' },
-    { id: 'cmp-2-5', address: { line1: '660 Manono St', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 2_290_000, soldDate: '2026-02-25', beds: 5, baths: 3, sqft: 2480, lotSqft: 8500, yearBuilt: 2003, distanceMi: 0.5, matchScore: 79, adjustments: { sqft: -56_000, time: 5_500, condition: -10_000, lot: -4_000 }, adjustedPrice: 2_225_500, photoEmoji: '🏝️' },
-    { id: 'cmp-2-6', address: { line1: '1812 Kalanianaole Hwy', city: 'Kailua', state: 'HI', zip: '96734', neighborhood: 'Kailua' }, soldPrice: 1_890_000, soldDate: '2026-03-10', beds: 4, baths: 3, sqft: 2240, lotSqft: 7600, yearBuilt: 1990, distanceMi: 0.9, matchScore: 71, adjustments: { sqft: 30_000, time: 3_400, condition: 22_000, lot: 6_500 }, adjustedPrice: 1_951_900, photoEmoji: '🌴' },
-  ],
   'l-003': [
     { id: 'cmp-3-1', address: { line1: '95-261 Waikalani Dr #C201', city: 'Mililani', state: 'HI', zip: '96789', neighborhood: 'Mililani' }, soldPrice: 720_000, soldDate: '2026-03-12', beds: 3, baths: 2, sqft: 1290, lotSqft: 0, yearBuilt: 2004, distanceMi: 0.1, matchScore: 94, adjustments: { sqft: 4_800, time: 2_100, condition: 5_000, lot: 0 }, adjustedPrice: 731_900, photoEmoji: '🏘️' },
     { id: 'cmp-3-2', address: { line1: '95-340 Waikalani Dr #A102', city: 'Mililani', state: 'HI', zip: '96789', neighborhood: 'Mililani' }, soldPrice: 755_000, soldDate: '2026-02-08', beds: 3, baths: 2, sqft: 1340, lotSqft: 0, yearBuilt: 2006, distanceMi: 0.2, matchScore: 91, adjustments: { sqft: -7_200, time: 4_500, condition: 0, lot: 0 }, adjustedPrice: 752_300, photoEmoji: '🏘️' },
@@ -190,165 +181,144 @@ export const compsByListing: Record<string, Comp[]> = {
     { id: 'cmp-3-5', address: { line1: '95-271 Waikalani Dr #B102', city: 'Mililani', state: 'HI', zip: '96789', neighborhood: 'Mililani' }, soldPrice: 735_000, soldDate: '2026-04-04', beds: 3, baths: 2, sqft: 1310, lotSqft: 0, yearBuilt: 2005, distanceMi: 0.0, matchScore: 97, adjustments: { sqft: 0, time: 200, condition: 0, lot: 0 }, adjustedPrice: 735_200, photoEmoji: '🏘️' },
     { id: 'cmp-3-6', address: { line1: '95-156 Kuahelani Ave #A8', city: 'Mililani', state: 'HI', zip: '96789', neighborhood: 'Mililani' }, soldPrice: 712_000, soldDate: '2026-02-22', beds: 3, baths: 2, sqft: 1295, lotSqft: 0, yearBuilt: 2002, distanceMi: 0.3, matchScore: 89, adjustments: { sqft: 1_800, time: 3_500, condition: 7_500, lot: 0 }, adjustedPrice: 724_800, photoEmoji: '🏘️' },
   ],
-  'l-004': [
-    { id: 'cmp-4-1', address: { line1: '470 Kawaihae St', city: 'Honolulu', state: 'HI', zip: '96825', neighborhood: 'Hawaii Kai' }, soldPrice: 1_840_000, soldDate: '2026-02-12', beds: 4, baths: 3, sqft: 2580, lotSqft: 6900, yearBuilt: 1982, distanceMi: 0.1, matchScore: 93, adjustments: { sqft: 12_000, time: 6_500, condition: 8_000, lot: 1_400 }, adjustedPrice: 1_867_900, photoEmoji: '🏡' },
-    { id: 'cmp-4-2', address: { line1: '6310 Lalea Pl', city: 'Honolulu', state: 'HI', zip: '96825', neighborhood: 'Hawaii Kai' }, soldPrice: 2_010_000, soldDate: '2026-03-04', beds: 4, baths: 3, sqft: 2740, lotSqft: 7400, yearBuilt: 1988, distanceMi: 0.4, matchScore: 86, adjustments: { sqft: -7_200, time: 3_400, condition: -12_000, lot: -2_100 }, adjustedPrice: 1_992_100, photoEmoji: '🏠' },
-    { id: 'cmp-4-3', address: { line1: '7011 Hawaii Kai Dr', city: 'Honolulu', state: 'HI', zip: '96825', neighborhood: 'Hawaii Kai' }, soldPrice: 1_750_000, soldDate: '2026-01-15', beds: 4, baths: 3, sqft: 2510, lotSqft: 7000, yearBuilt: 1980, distanceMi: 0.6, matchScore: 78, adjustments: { sqft: 20_400, time: 9_500, condition: 25_000, lot: 700 }, adjustedPrice: 1_805_600, photoEmoji: '🏡' },
-    { id: 'cmp-4-4', address: { line1: '450 Pakui St', city: 'Honolulu', state: 'HI', zip: '96825', neighborhood: 'Hawaii Kai' }, soldPrice: 1_925_000, soldDate: '2026-03-22', beds: 4, baths: 3, sqft: 2640, lotSqft: 7150, yearBuilt: 1986, distanceMi: 0.3, matchScore: 90, adjustments: { sqft: 1_600, time: 1_800, condition: 0, lot: 200 }, adjustedPrice: 1_928_600, photoEmoji: '🏠' },
-    { id: 'cmp-4-5', address: { line1: '538 Hawaii Kai Dr', city: 'Honolulu', state: 'HI', zip: '96825', neighborhood: 'Hawaii Kai' }, soldPrice: 2_080_000, soldDate: '2026-04-01', beds: 5, baths: 3, sqft: 2820, lotSqft: 7400, yearBuilt: 1990, distanceMi: 0.2, matchScore: 82, adjustments: { sqft: -22_400, time: 1_000, condition: -15_000, lot: -2_100 }, adjustedPrice: 2_041_500, photoEmoji: '🌊' },
-  ],
   'l-005': [
     { id: 'cmp-5-1', address: { line1: '2812 Lowrey Ave', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' }, soldPrice: 1_310_000, soldDate: '2026-02-08', beds: 3, baths: 2, sqft: 1680, lotSqft: 5200, yearBuilt: 1958, distanceMi: 0.1, matchScore: 92, adjustments: { sqft: 6_400, time: 5_900, condition: 12_000, lot: 1_400 }, adjustedPrice: 1_335_700, photoEmoji: '🌳' },
     { id: 'cmp-5-2', address: { line1: '2965 East Manoa Rd', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' }, soldPrice: 1_440_000, soldDate: '2026-03-15', beds: 3, baths: 2, sqft: 1820, lotSqft: 5800, yearBuilt: 1966, distanceMi: 0.5, matchScore: 84, adjustments: { sqft: -16_000, time: 3_200, condition: -22_000, lot: -2_800 }, adjustedPrice: 1_402_400, photoEmoji: '🌿' },
     { id: 'cmp-5-3', address: { line1: '2710 Pamoa Rd', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' }, soldPrice: 1_265_000, soldDate: '2026-01-12', beds: 3, baths: 2, sqft: 1640, lotSqft: 5100, yearBuilt: 1955, distanceMi: 0.7, matchScore: 76, adjustments: { sqft: 12_800, time: 8_700, condition: 28_000, lot: 1_500 }, adjustedPrice: 1_316_000, photoEmoji: '🌳' },
-    { id: 'cmp-5-4', address: { line1: '3120 Beaumont Woods Pl', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' }, soldPrice: 1_410_000, soldDate: '2026-03-28', beds: 3, baths: 2, sqft: 1750, lotSqft: 5500, yearBuilt: 1968, distanceMi: 0.6, matchScore: 81, adjustments: { sqft: -3_000, time: 1_400, condition: -8_000, lot: -300 }, adjustedPrice: 1_400_100, photoEmoji: '🏡' },
-    { id: 'cmp-5-5', address: { line1: '2840 Lowrey Ave', city: 'Honolulu', state: 'HI', zip: '96822', neighborhood: 'Manoa' }, soldPrice: 1_355_000, soldDate: '2026-04-08', beds: 3, baths: 2, sqft: 1700, lotSqft: 5350, yearBuilt: 1960, distanceMi: 0.0, matchScore: 95, adjustments: { sqft: 2_000, time: 200, condition: 0, lot: 200 }, adjustedPrice: 1_357_400, photoEmoji: '🌳' },
   ],
 };
 
 // =============================================================================
-// DEALS — 6 (4 sell, 2 buy)
+// INCOMING OFFERS — on Maya's listing (the seller's marketing page)
 // =============================================================================
 
-export const deals: Deal[] = [
-  { id: 'd-001', side: 'sell', stage: 'listed', listingId: 'l-001', sellerId: 'c-001', price: 985_000, openedDate: '2026-04-15', expectedCloseDate: '2026-06-12', onTrack: 'yes', commissionEst: 24_625, notes: '3 showings scheduled this week. Anaha unit, strong interest.' },
-  { id: 'd-002', side: 'sell', stage: 'listed', listingId: 'l-002', sellerId: 'c-002', price: 2_175_000, openedDate: '2026-03-30', expectedCloseDate: '2026-06-30', onTrack: 'at_risk', commissionEst: 54_375, notes: 'Sale at 28 DOM. Need to consider a price refresh after Sunday open house.' },
-  { id: 'd-003', side: 'sell', stage: 'cma', listingId: 'l-003', sellerId: 'c-003', price: 745_000, openedDate: '2026-04-22', expectedCloseDate: '2026-07-15', onTrack: 'yes', commissionEst: 18_625, notes: 'Pre-market. Hits MLS Monday. Photographer scheduled Friday.' },
-  { id: 'd-004', side: 'sell', stage: 'under_contract', listingId: 'l-004', sellerId: 'c-004', price: 1_895_000, openedDate: '2026-04-01', expectedCloseDate: '2026-05-15', onTrack: 'overdue', commissionEst: 47_375, notes: 'Inspection contingency expires in 2 days. Buyer requested 3 repairs.' },
-  { id: 'd-101', side: 'buy', stage: 'searching', buyerId: 'b-001', price: 800_000, openedDate: '2026-04-08', expectedCloseDate: '2026-08-15', onTrack: 'yes', commissionEst: 20_000, notes: 'Saved 2 listings. Touring l-003 this weekend.' },
-  { id: 'd-102', side: 'buy', stage: 'offer', buyerId: 'b-002', listingId: 'l-002', price: 2_100_000, openedDate: '2026-04-19', expectedCloseDate: '2026-05-20', onTrack: 'at_risk', commissionEst: 52_500, notes: 'Cash buyer, offer at $2.1M (3.5% under list). Awaiting seller response.' },
+export interface IncomingOffer {
+  id: string;
+  buyerContactId: string;
+  buyerLabel: string; // anonymized: "Buyer 1", or use first name
+  offerPrice: number;
+  earnestMoney: number;
+  contingencies: ('inspection' | 'financing' | 'appraisal')[];
+  closeDate: string;
+  status: 'received' | 'reviewed' | 'countered' | 'accepted' | 'rejected';
+  receivedDate: string;
+  aiAnalysis: string;
+  preApproved: boolean;
+}
+
+export const incomingOffersForMyHome: IncomingOffer[] = [
+  {
+    id: 'in-1',
+    buyerContactId: 'c-201',
+    buyerLabel: 'Jordan W. · pre-approved',
+    offerPrice: 968_000,
+    earnestMoney: 25_000,
+    contingencies: ['inspection', 'financing', 'appraisal'],
+    closeDate: '2026-06-15',
+    status: 'received',
+    receivedDate: '2026-04-26',
+    aiAnalysis: 'Below your AI-recommended range ($965k–$1.01M). Reasonable opening offer. Strong financing — pre-approved with First Pacific. Recommend countering at $988k.',
+    preApproved: true,
+  },
+  {
+    id: 'in-2',
+    buyerContactId: 'c-202',
+    buyerLabel: 'Mei T. · cash buyer',
+    offerPrice: 945_000,
+    earnestMoney: 50_000,
+    contingencies: ['inspection'],
+    closeDate: '2026-05-15',
+    status: 'received',
+    receivedDate: '2026-04-27',
+    aiAnalysis: 'Cash offer with 30-day close — strong terms. Price is $20k below your AI midpoint. Recommend counter to $985k cash, accept the 30-day timeline.',
+    preApproved: true,
+  },
 ];
+
+// =============================================================================
+// ALEX'S OUTGOING OFFER (on Mililani #B304)
+// =============================================================================
+
+export const alexOutgoingOffer = {
+  id: 'out-1',
+  listingId: 'l-003',
+  offerPrice: 745_000,
+  earnestMoney: 18_000,
+  contingencies: ['inspection', 'financing', 'appraisal'] as const,
+  closeDate: '2026-06-30',
+  status: 'sent' as const,
+  sentDate: '2026-04-26',
+  aiAnalysis: 'Right at list price — competitive but not aggressive. Strong financing position (pre-approved). 50% probability of acceptance based on 5-day market exposure.',
+};
 
 // =============================================================================
 // MILESTONES — keyed by deal id
 // =============================================================================
 
-export const milestonesByDeal: Record<string, TimelineMilestone[]> = {
-  'd-001': [
-    { id: 'm-1-1', dealId: 'd-001', label: 'Identity verified', dueDate: '2026-04-15', completedDate: '2026-04-15', status: 'done', ownerRole: 'agent' },
-    { id: 'm-1-2', dealId: 'd-001', label: 'Title report ordered', dueDate: '2026-04-16', completedDate: '2026-04-16', status: 'done', ownerRole: 'title' },
-    { id: 'm-1-3', dealId: 'd-001', label: 'Title report received — clear', dueDate: '2026-04-19', completedDate: '2026-04-18', status: 'done', ownerRole: 'title' },
-    { id: 'm-1-4', dealId: 'd-001', label: 'CMA generated', dueDate: '2026-04-17', completedDate: '2026-04-16', status: 'done', ownerRole: 'agent' },
-    { id: 'm-1-5', dealId: 'd-001', label: 'Listing agreement signed', dueDate: '2026-04-19', completedDate: '2026-04-19', status: 'done', ownerRole: 'seller', fiduciaryFlag: 'Required disclosures presented' },
-    { id: 'm-1-6', dealId: 'd-001', label: 'Photography complete', dueDate: '2026-04-20', completedDate: '2026-04-20', status: 'done', ownerRole: 'agent' },
-    { id: 'm-1-7', dealId: 'd-001', label: 'MLS active', dueDate: '2026-04-21', completedDate: '2026-04-21', status: 'done', ownerRole: 'agent' },
-    { id: 'm-1-8', dealId: 'd-001', label: 'First showings', dueDate: '2026-04-25', status: 'in_progress', ownerRole: 'agent' },
-    { id: 'm-1-9', dealId: 'd-001', label: 'Open house Saturday', dueDate: '2026-05-04', status: 'upcoming', ownerRole: 'agent' },
-    { id: 'm-1-10', dealId: 'd-001', label: 'Review offers / counter', dueDate: '2026-05-15', status: 'upcoming', ownerRole: 'agent' },
-    { id: 'm-1-11', dealId: 'd-001', label: 'Close', dueDate: '2026-06-12', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-  'd-002': [
-    { id: 'm-2-1', dealId: 'd-002', label: 'Identity verified', dueDate: '2026-03-30', completedDate: '2026-03-30', status: 'done', ownerRole: 'agent' },
-    { id: 'm-2-2', dealId: 'd-002', label: 'Title clear', dueDate: '2026-04-02', completedDate: '2026-04-04', status: 'done', ownerRole: 'title' },
-    { id: 'm-2-3', dealId: 'd-002', label: 'CMA generated', dueDate: '2026-04-01', completedDate: '2026-04-01', status: 'done', ownerRole: 'agent' },
-    { id: 'm-2-4', dealId: 'd-002', label: 'Listing agreement signed', dueDate: '2026-04-04', completedDate: '2026-04-05', status: 'done', ownerRole: 'seller' },
-    { id: 'm-2-5', dealId: 'd-002', label: 'MLS active', dueDate: '2026-04-06', completedDate: '2026-04-06', status: 'done', ownerRole: 'agent' },
-    { id: 'm-2-6', dealId: 'd-002', label: 'Drip campaign launched', dueDate: '2026-04-07', completedDate: '2026-04-07', status: 'done', ownerRole: 'agent' },
-    { id: 'm-2-7', dealId: 'd-002', label: 'Open house #1', dueDate: '2026-04-13', completedDate: '2026-04-13', status: 'done', ownerRole: 'agent' },
-    { id: 'm-2-8', dealId: 'd-002', label: 'Price refresh decision', dueDate: '2026-04-26', status: 'at_risk', ownerRole: 'agent', fiduciaryFlag: 'Discuss list-price reduction with seller' },
-    { id: 'm-2-9', dealId: 'd-002', label: 'Open house #2', dueDate: '2026-05-04', status: 'upcoming', ownerRole: 'agent' },
-    { id: 'm-2-10', dealId: 'd-002', label: 'Close', dueDate: '2026-06-30', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-  'd-003': [
-    { id: 'm-3-1', dealId: 'd-003', label: 'Identity verified', dueDate: '2026-04-22', completedDate: '2026-04-22', status: 'done', ownerRole: 'agent' },
-    { id: 'm-3-2', dealId: 'd-003', label: 'Title report ordered', dueDate: '2026-04-23', completedDate: '2026-04-23', status: 'done', ownerRole: 'title' },
-    { id: 'm-3-3', dealId: 'd-003', label: 'Title report received', dueDate: '2026-04-26', status: 'in_progress', ownerRole: 'title' },
-    { id: 'm-3-4', dealId: 'd-003', label: 'CMA generated', dueDate: '2026-04-24', completedDate: '2026-04-24', status: 'done', ownerRole: 'agent' },
-    { id: 'm-3-5', dealId: 'd-003', label: 'Photography', dueDate: '2026-04-25', status: 'in_progress', ownerRole: 'agent' },
-    { id: 'm-3-6', dealId: 'd-003', label: 'Listing agreement signed', dueDate: '2026-04-26', status: 'upcoming', ownerRole: 'seller' },
-    { id: 'm-3-7', dealId: 'd-003', label: 'MLS active', dueDate: '2026-04-28', status: 'upcoming', ownerRole: 'agent' },
-    { id: 'm-3-8', dealId: 'd-003', label: 'Close', dueDate: '2026-07-15', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-  'd-004': [
-    { id: 'm-4-1', dealId: 'd-004', label: 'Identity verified', dueDate: '2026-04-01', completedDate: '2026-04-01', status: 'done', ownerRole: 'agent' },
-    { id: 'm-4-2', dealId: 'd-004', label: 'Listing agreement signed', dueDate: '2026-04-02', completedDate: '2026-04-02', status: 'done', ownerRole: 'seller' },
-    { id: 'm-4-3', dealId: 'd-004', label: 'MLS active', dueDate: '2026-04-04', completedDate: '2026-04-04', status: 'done', ownerRole: 'agent' },
-    { id: 'm-4-4', dealId: 'd-004', label: 'Offer accepted', dueDate: '2026-04-19', completedDate: '2026-04-19', status: 'done', ownerRole: 'agent' },
-    { id: 'm-4-5', dealId: 'd-004', label: 'Earnest money received', dueDate: '2026-04-22', completedDate: '2026-04-21', status: 'done', ownerRole: 'escrow' },
-    { id: 'm-4-6', dealId: 'd-004', label: 'Inspection complete', dueDate: '2026-04-24', completedDate: '2026-04-23', status: 'done', ownerRole: 'inspector' },
-    { id: 'm-4-7', dealId: 'd-004', label: 'Inspection contingency expires', dueDate: '2026-04-29', status: 'overdue', ownerRole: 'buyer', fiduciaryFlag: 'Buyer must respond by 2026-04-29 or contingency removed' },
-    { id: 'm-4-8', dealId: 'd-004', label: 'Loan appraisal', dueDate: '2026-05-02', status: 'upcoming', ownerRole: 'lender' },
-    { id: 'm-4-9', dealId: 'd-004', label: 'Final walk-through', dueDate: '2026-05-12', status: 'upcoming', ownerRole: 'buyer' },
-    { id: 'm-4-10', dealId: 'd-004', label: 'Close', dueDate: '2026-05-15', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-  'd-101': [
-    { id: 'm-101-1', dealId: 'd-101', label: 'Pre-approval complete', dueDate: '2026-04-08', completedDate: '2026-04-08', status: 'done', ownerRole: 'lender' },
-    { id: 'm-101-2', dealId: 'd-101', label: 'Buyer rep agreement signed', dueDate: '2026-04-10', completedDate: '2026-04-10', status: 'done', ownerRole: 'buyer' },
-    { id: 'm-101-3', dealId: 'd-101', label: 'Search criteria locked', dueDate: '2026-04-11', completedDate: '2026-04-11', status: 'done', ownerRole: 'agent' },
-    { id: 'm-101-4', dealId: 'd-101', label: 'Drip campaign live', dueDate: '2026-04-12', completedDate: '2026-04-12', status: 'done', ownerRole: 'agent' },
-    { id: 'm-101-5', dealId: 'd-101', label: 'Tour Anaha #2204', dueDate: '2026-04-26', completedDate: '2026-04-25', status: 'done', ownerRole: 'agent' },
-    { id: 'm-101-6', dealId: 'd-101', label: 'Tour Mililani #B304', dueDate: '2026-04-28', status: 'in_progress', ownerRole: 'agent' },
-    { id: 'm-101-7', dealId: 'd-101', label: 'Offer drafted', dueDate: '2026-05-05', status: 'upcoming', ownerRole: 'agent' },
-    { id: 'm-101-8', dealId: 'd-101', label: 'Close', dueDate: '2026-08-15', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-  'd-102': [
-    { id: 'm-102-1', dealId: 'd-102', label: 'Pre-approval (cash)', dueDate: '2026-04-19', completedDate: '2026-04-19', status: 'done', ownerRole: 'buyer' },
-    { id: 'm-102-2', dealId: 'd-102', label: 'Buyer rep agreement signed', dueDate: '2026-04-19', completedDate: '2026-04-19', status: 'done', ownerRole: 'buyer' },
-    { id: 'm-102-3', dealId: 'd-102', label: 'Tour Kaha St', dueDate: '2026-04-21', completedDate: '2026-04-21', status: 'done', ownerRole: 'agent' },
-    { id: 'm-102-4', dealId: 'd-102', label: 'Offer analysis complete', dueDate: '2026-04-22', completedDate: '2026-04-22', status: 'done', ownerRole: 'agent' },
-    { id: 'm-102-5', dealId: 'd-102', label: 'Offer sent', dueDate: '2026-04-23', completedDate: '2026-04-23', status: 'done', ownerRole: 'agent' },
-    { id: 'm-102-6', dealId: 'd-102', label: 'Seller response deadline', dueDate: '2026-04-28', status: 'at_risk', ownerRole: 'seller' },
-    { id: 'm-102-7', dealId: 'd-102', label: 'Open escrow', dueDate: '2026-04-30', status: 'upcoming', ownerRole: 'escrow' },
-    { id: 'm-102-8', dealId: 'd-102', label: 'Close', dueDate: '2026-05-20', status: 'upcoming', ownerRole: 'escrow' },
-  ],
-};
+export const sellTimeline: TimelineMilestone[] = [
+  { id: 'sm-1', dealId: 'sell-active', label: 'Identity & ownership verified', dueDate: '2026-04-15', completedDate: '2026-04-15', status: 'done', ownerRole: 'agent' },
+  { id: 'sm-2', dealId: 'sell-active', label: 'Title report — clear', dueDate: '2026-04-18', completedDate: '2026-04-18', status: 'done', ownerRole: 'title' },
+  { id: 'sm-3', dealId: 'sell-active', label: 'Property intake complete', dueDate: '2026-04-17', completedDate: '2026-04-16', status: 'done', ownerRole: 'seller' },
+  { id: 'sm-4', dealId: 'sell-active', label: 'Photos taken & AI-tagged', dueDate: '2026-04-20', completedDate: '2026-04-20', status: 'done', ownerRole: 'agent' },
+  { id: 'sm-5', dealId: 'sell-active', label: 'AI valuation complete', dueDate: '2026-04-21', completedDate: '2026-04-21', status: 'done', ownerRole: 'agent' },
+  { id: 'sm-6', dealId: 'sell-active', label: 'Listing agreement signed', dueDate: '2026-04-21', completedDate: '2026-04-21', status: 'done', ownerRole: 'seller', fiduciaryFlag: 'Disclosures presented and acknowledged' },
+  { id: 'sm-7', dealId: 'sell-active', label: 'MLS active + marketing live', dueDate: '2026-04-22', completedDate: '2026-04-22', status: 'done', ownerRole: 'agent' },
+  { id: 'sm-8', dealId: 'sell-active', label: 'Reviewing offers', dueDate: '2026-04-29', status: 'in_progress', ownerRole: 'seller', description: '2 offers received — see Marketing tab' },
+  { id: 'sm-9', dealId: 'sell-active', label: 'Open escrow', dueDate: '2026-05-04', status: 'upcoming', ownerRole: 'escrow' },
+  { id: 'sm-10', dealId: 'sell-active', label: 'Inspection contingency window', dueDate: '2026-05-19', status: 'upcoming', ownerRole: 'buyer' },
+  { id: 'sm-11', dealId: 'sell-active', label: 'Final walk-through', dueDate: '2026-06-09', status: 'upcoming', ownerRole: 'buyer' },
+  { id: 'sm-12', dealId: 'sell-active', label: 'Close & funds released', dueDate: '2026-06-12', status: 'upcoming', ownerRole: 'escrow' },
+];
+
+export const buyTimeline: TimelineMilestone[] = [
+  { id: 'bm-1', dealId: 'buy-active', label: 'Pre-approval complete', dueDate: '2026-04-08', completedDate: '2026-04-08', status: 'done', ownerRole: 'lender' },
+  { id: 'bm-2', dealId: 'buy-active', label: 'Buyer agreement signed', dueDate: '2026-04-10', completedDate: '2026-04-10', status: 'done', ownerRole: 'buyer' },
+  { id: 'bm-3', dealId: 'buy-active', label: 'Search criteria locked', dueDate: '2026-04-11', completedDate: '2026-04-11', status: 'done', ownerRole: 'agent' },
+  { id: 'bm-4', dealId: 'buy-active', label: 'Toured Anaha #2204', dueDate: '2026-04-25', completedDate: '2026-04-25', status: 'done', ownerRole: 'agent' },
+  { id: 'bm-5', dealId: 'buy-active', label: 'Toured Mililani #B304', dueDate: '2026-04-25', completedDate: '2026-04-25', status: 'done', ownerRole: 'agent' },
+  { id: 'bm-6', dealId: 'buy-active', label: 'Offer sent on Mililani #B304', dueDate: '2026-04-26', completedDate: '2026-04-26', status: 'done', ownerRole: 'agent' },
+  { id: 'bm-7', dealId: 'buy-active', label: 'Awaiting seller response', dueDate: '2026-04-29', status: 'in_progress', ownerRole: 'seller' },
+  { id: 'bm-8', dealId: 'buy-active', label: 'Open escrow', dueDate: '2026-05-04', status: 'upcoming', ownerRole: 'escrow' },
+  { id: 'bm-9', dealId: 'buy-active', label: 'Inspection', dueDate: '2026-05-12', status: 'upcoming', ownerRole: 'inspector' },
+  { id: 'bm-10', dealId: 'buy-active', label: 'Loan appraisal & underwriting', dueDate: '2026-05-26', status: 'upcoming', ownerRole: 'lender' },
+  { id: 'bm-11', dealId: 'buy-active', label: 'Final walk-through', dueDate: '2026-06-26', status: 'upcoming', ownerRole: 'buyer' },
+  { id: 'bm-12', dealId: 'buy-active', label: 'Close — keys & moving day 🎉', dueDate: '2026-06-30', status: 'upcoming', ownerRole: 'escrow' },
+];
 
 // =============================================================================
-// DOCUMENTS — keyed by deal id
+// DOCUMENTS
 // =============================================================================
 
-export const documentsByDeal: Record<string, DocumentRef[]> = {
-  'd-001': [
-    { id: 'doc-1-1', dealId: 'd-001', name: 'Listing Agreement — 1108 Auahi #2204', type: 'listing_agreement', status: 'signed', signedDate: '2026-04-19' },
-    { id: 'doc-1-2', dealId: 'd-001', name: 'Seller Property Disclosure', type: 'disclosure', status: 'signed', signedDate: '2026-04-19' },
-    { id: 'doc-1-3', dealId: 'd-001', name: 'Lead-Based Paint Disclosure', type: 'disclosure', status: 'signed', signedDate: '2026-04-19' },
-  ],
-  'd-002': [
-    { id: 'doc-2-1', dealId: 'd-002', name: 'Listing Agreement — 347 Kaha St', type: 'listing_agreement', status: 'signed', signedDate: '2026-04-05' },
-    { id: 'doc-2-2', dealId: 'd-002', name: 'Seller Property Disclosure', type: 'disclosure', status: 'signed', signedDate: '2026-04-05' },
-    { id: 'doc-2-3', dealId: 'd-002', name: 'Price Reduction Addendum', type: 'addendum', status: 'unsigned' },
-  ],
-  'd-004': [
-    { id: 'doc-4-1', dealId: 'd-004', name: 'Listing Agreement — 538 Kawaihae', type: 'listing_agreement', status: 'signed', signedDate: '2026-04-02' },
-    { id: 'doc-4-2', dealId: 'd-004', name: 'Purchase Contract', type: 'offer', status: 'signed', signedDate: '2026-04-19' },
-    { id: 'doc-4-3', dealId: 'd-004', name: 'Inspection Response Addendum', type: 'addendum', status: 'sent' },
-  ],
-  'd-101': [
-    { id: 'doc-101-1', dealId: 'd-101', name: 'Buyer Representation Agreement', type: 'buyer_rep', status: 'signed', signedDate: '2026-04-10' },
-  ],
-  'd-102': [
-    { id: 'doc-102-1', dealId: 'd-102', name: 'Buyer Representation Agreement', type: 'buyer_rep', status: 'signed', signedDate: '2026-04-19' },
-    { id: 'doc-102-2', dealId: 'd-102', name: 'Offer — 347 Kaha St', type: 'offer', status: 'sent' },
-  ],
-};
+export const sellDocuments: DocumentRef[] = [
+  { id: 'sd-1', dealId: 'sell-active', name: 'Listing Agreement — 1108 Auahi #2204', type: 'listing_agreement', status: 'signed', signedDate: '2026-04-21' },
+  { id: 'sd-2', dealId: 'sell-active', name: 'Seller Property Disclosure', type: 'disclosure', status: 'signed', signedDate: '2026-04-21' },
+  { id: 'sd-3', dealId: 'sell-active', name: 'Lead-Based Paint Disclosure', type: 'disclosure', status: 'signed', signedDate: '2026-04-21' },
+  { id: 'sd-4', dealId: 'sell-active', name: 'HOA Disclosure Packet', type: 'disclosure', status: 'sent' },
+  { id: 'sd-5', dealId: 'sell-active', name: 'Counter-offer to Jordan W.', type: 'addendum', status: 'unsigned' },
+];
 
-// =============================================================================
-// OFFERS
-// =============================================================================
-
-export const offers: Offer[] = [
-  {
-    id: 'o-001',
-    buyerId: 'b-002',
-    listingId: 'l-002',
-    offerPrice: 2_100_000,
-    earnestMoney: 50_000,
-    contingencies: ['inspection'],
-    closeDate: '2026-05-20',
-    recommendedRange: [2_080_000, 2_175_000],
-    positionVsComps: 'below',
-    status: 'sent',
-    createdDate: '2026-04-23',
-  },
+export const buyDocuments: DocumentRef[] = [
+  { id: 'bd-1', dealId: 'buy-active', name: 'Buyer Representation Agreement', type: 'buyer_rep', status: 'signed', signedDate: '2026-04-10' },
+  { id: 'bd-2', dealId: 'buy-active', name: 'Pre-approval letter — First Pacific', type: 'disclosure', status: 'signed', signedDate: '2026-04-08' },
+  { id: 'bd-3', dealId: 'buy-active', name: 'Purchase Offer — 95-271 Waikalani #B304', type: 'offer', status: 'sent' },
 ];
 
 // =============================================================================
 // ALERTS
 // =============================================================================
 
-export const alerts: Alert[] = [
-  { id: 'a-1', dealId: 'd-004', severity: 'danger', title: 'Inspection contingency expiring', body: '538 Kawaihae buyer must respond in 2 days or contingency drops.', timestamp: '2026-04-27T07:14:00Z', unread: true },
-  { id: 'a-2', dealId: 'd-002', severity: 'warning', title: 'Price refresh decision due', body: '347 Kaha St at 28 DOM. Recommended action: reduce to $2.099M.', timestamp: '2026-04-27T06:50:00Z', unread: true },
-  { id: 'a-3', listingId: 'l-001', severity: 'info', title: 'New comp alert', body: 'Anaha #1808 just sold $980k — supports current Auahi list price.', timestamp: '2026-04-26T14:22:00Z', unread: true },
-  { id: 'a-4', buyerId: 'b-001', severity: 'success', title: 'Drip reply', body: 'Trevor Nakamura replied to drip — interested in Mililani tour Saturday.', timestamp: '2026-04-26T11:08:00Z', unread: false },
+export const sellAlerts: Alert[] = [
+  { id: 'sa-1', severity: 'success', title: 'New offer received', body: 'Jordan W. submitted $968,000 with full financing. AI analysis ready.', timestamp: '2026-04-27T07:14:00Z', unread: true },
+  { id: 'sa-2', severity: 'success', title: 'Cash offer received', body: 'Mei T. submitted $945,000 cash with 30-day close.', timestamp: '2026-04-27T06:50:00Z', unread: true },
+  { id: 'sa-3', severity: 'info', title: '142 buyers viewed your listing today', body: '3,247 matched buyers in your AI drip campaign so far. 18% open rate.', timestamp: '2026-04-26T18:00:00Z', unread: false },
 ];
+
+export const buyAlerts: Alert[] = [
+  { id: 'ba-1', severity: 'info', title: 'Awaiting seller response', body: 'Your offer on Mililani #B304 was sent yesterday. Sellers usually respond within 48 hours.', timestamp: '2026-04-27T08:00:00Z', unread: true },
+  { id: 'ba-2', severity: 'success', title: '3 new homes match your criteria', body: 'AI found 3 new listings under $850k in Honolulu/Mililani. View them in your feed.', timestamp: '2026-04-27T06:30:00Z', unread: true },
+  { id: 'ba-3', severity: 'warning', title: 'Pre-approval renews soon', body: 'Your pre-approval expires July 15. AI will auto-renew with First Pacific 30 days before.', timestamp: '2026-04-25T14:00:00Z', unread: false },
+];
+
+// Lender + title for "your team"
+export const sellTeam = ['c-302', 'c-303', 'c-304', 'c-305', 'c-306']; // title, inspector, escrow, photographer, partner agent
+export const buyTeam = ['c-301', 'c-302', 'c-304', 'c-303', 'c-306']; // lender, title, escrow, inspector, partner agent

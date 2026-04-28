@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import AppShell from '@/components/layout/AppShell';
-import { LoginForm } from '@/components/auth/LoginForm';
-import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { ToastProvider } from '@/components/shared/Toast';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
@@ -22,18 +20,18 @@ function lazyRetry<T extends React.ComponentType<any>>(
   );
 }
 
-const Dashboard = lazyRetry(() => import('@/pages/dashboard/Dashboard'));
-const PipelinePage = lazyRetry(() => import('@/pages/pipeline/PipelinePage'));
-const ListingsPage = lazyRetry(() => import('@/pages/listings/ListingsPage'));
-const ListingDetail = lazyRetry(() => import('@/pages/listings/ListingDetail'));
-const CmaPage = lazyRetry(() => import('@/pages/listings/CmaPage'));
-const BuyersPage = lazyRetry(() => import('@/pages/buyers/BuyersPage'));
-const BuyerDetail = lazyRetry(() => import('@/pages/buyers/BuyerDetail'));
-const OfferBuilder = lazyRetry(() => import('@/pages/buyers/OfferBuilder'));
-const DealTimeline = lazyRetry(() => import('@/pages/deals/DealTimeline'));
-const ContactsPage = lazyRetry(() => import('@/pages/contacts/ContactsPage'));
-const ToolsPage = lazyRetry(() => import('@/pages/tools/ToolsPage'));
-const RoadmapPage = lazyRetry(() => import('@/pages/roadmap/RoadmapPage'));
+const LandingPage = lazyRetry(() => import('@/pages/landing/LandingPage'));
+const SellDashboard = lazyRetry(() => import('@/pages/sell/SellDashboard'));
+const IntakePage = lazyRetry(() => import('@/pages/sell/IntakePage'));
+const SellCmaPage = lazyRetry(() => import('@/pages/sell/CmaPage'));
+const ListingPreview = lazyRetry(() => import('@/pages/sell/ListingPreview'));
+const MarketingPage = lazyRetry(() => import('@/pages/sell/MarketingPage'));
+const BuyDashboard = lazyRetry(() => import('@/pages/buy/BuyDashboard'));
+const BuyFeed = lazyRetry(() => import('@/pages/buy/BuyFeed'));
+const BuyListingDetail = lazyRetry(() => import('@/pages/buy/BuyListingDetail'));
+const BuyOfferBuilder = lazyRetry(() => import('@/pages/buy/BuyOfferBuilder'));
+const TimelinePage = lazyRetry(() => import('@/pages/timeline/TimelinePage'));
+const HowItWorks = lazyRetry(() => import('@/pages/how/HowItWorks'));
 const NotFound = lazyRetry(() => import('@/pages/NotFound'));
 
 function PageLoader() {
@@ -57,21 +55,26 @@ export default function App() {
         <BrowserRouter>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/login" element={<LoginForm />} />
+              <Route path="/" element={<LandingPage />} />
 
-              <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-                <Route index element={<Dashboard />} />
-                <Route path="pipeline" element={<PipelinePage />} />
-                <Route path="listings" element={<ListingsPage />} />
-                <Route path="listings/:id" element={<ListingDetail />} />
-                <Route path="listings/:id/cma" element={<CmaPage />} />
-                <Route path="buyers" element={<BuyersPage />} />
-                <Route path="buyers/:id" element={<BuyerDetail />} />
-                <Route path="buyers/:id/offer" element={<OfferBuilder />} />
-                <Route path="deals/:id" element={<DealTimeline />} />
-                <Route path="contacts" element={<ContactsPage />} />
-                <Route path="tools" element={<ToolsPage />} />
-                <Route path="roadmap" element={<RoadmapPage />} />
+              <Route element={<AppShell />}>
+                {/* Sell flow */}
+                <Route path="sell" element={<SellDashboard />} />
+                <Route path="sell/intake" element={<IntakePage />} />
+                <Route path="sell/valuation" element={<SellCmaPage />} />
+                <Route path="sell/listing" element={<ListingPreview />} />
+                <Route path="sell/marketing" element={<MarketingPage />} />
+                <Route path="sell/timeline" element={<TimelinePage />} />
+
+                {/* Buy flow */}
+                <Route path="buy" element={<BuyDashboard />} />
+                <Route path="buy/feed" element={<BuyFeed />} />
+                <Route path="buy/listings/:id" element={<BuyListingDetail />} />
+                <Route path="buy/listings/:id/offer" element={<BuyOfferBuilder />} />
+                <Route path="buy/timeline" element={<TimelinePage />} />
+
+                {/* Shared */}
+                <Route path="how-it-works" element={<HowItWorks />} />
               </Route>
 
               <Route path="*" element={<NotFound />} />
